@@ -5,12 +5,18 @@
 
 typedef struct Trie
 {
-    struct Trie ** children;
-    bool marked;
+    struct Trie * children[26];
+    void * content;
 } Trie;
 
-Trie createTrie();
+Trie * createTrie();
 
-void deleteTrie();
+void destroyTrie(Trie * trie);
+
+void * removeTrie(Trie * trie, char * word);
+
+void insertTrie(Trie * trie, char * word, void * content);
+
+void * searchTrie(Trie * trie, char * word);
 
 #endif
