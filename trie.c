@@ -5,7 +5,7 @@
 Trie * createTrie(){
     Trie * trie = (Trie*)malloc(sizeof(Trie));
     trie->content = NULL;
-    for(int i = 0; i < 26; i++){
+    for(int i = 0; i < ALPHABET_SIZE; i++){
         trie->children[i] = NULL;
     }
     return trie;
@@ -18,7 +18,7 @@ void destroyTrie(Trie * trie){
     if(trie == NULL){
         return;
     }
-    for(int i = 0; i < 26; i++){
+    for(int i = 0; i < ALPHABET_SIZE; i++){
         destroyTrie(trie->children[i]);
     }
     if(trie->content) free (trie->content);
@@ -27,7 +27,7 @@ void destroyTrie(Trie * trie){
 
 void insertTrie(Trie * trie, char * word, void * content){
     // Inserts some content into the Trie
-    if(word[1] == '\0'){
+    if(word[1] == '\0'|| word[0] == '\0'){
         trie->content = content;
         return;
     }

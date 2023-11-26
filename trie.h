@@ -3,9 +3,12 @@
 
 #include <stdbool.h>
 
+#define ALPHABET_SIZE 26
+
+
 typedef struct Trie
 {
-    struct Trie * children[26];
+    struct Trie * children[ALPHABET_SIZE];
     void * content;
 } Trie;
 
