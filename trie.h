@@ -16,7 +16,7 @@ Trie * createTrie();
 
 void destroyTrie(Trie * trie, void (*callback)(void *));
 
-void * removeTrie(Trie * trie, char * word);
+int removeTrie(Trie * trie, char * word, void ** output);
 
 void insertTrie(Trie * trie, char * word, void * content);
 

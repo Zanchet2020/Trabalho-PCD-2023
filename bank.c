@@ -94,7 +94,9 @@ void registerBank(Bank * bank, Register * reg){
 }
 
 Register * removeBank(Bank * bank, char * id){
-    bank->numOfRegisters--;
-    return (Register*)removeTrie(bank->trie, id);
+    Register * reg = newRegister();
+    removeTrie(bank->trie, id, &reg);
+    if(reg) bank->numOfRegisters--;
+    return reg;
 }
 

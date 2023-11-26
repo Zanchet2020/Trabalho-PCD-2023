@@ -72,7 +72,8 @@ int main(){
             char id[ID_LENGHT];
             scanf("%s", id);
             Register * reg = removeBank(bank, id);
-            printf("Removido (%s|%s|%d)\n", reg->id, reg->name, reg->age);
+            if(reg) printf("Removido (%s|%s|%d)\n", reg->id, reg->name, reg->age);
+            else printf("ID %s nao encontrado", id);
             break;
         }
         case 'S':

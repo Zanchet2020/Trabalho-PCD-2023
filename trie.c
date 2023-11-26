@@ -47,33 +47,44 @@ void insertTrie(Trie * trie, char * word, void * content){
     return;
 }
 
-void * removeTrie(Trie * trie, char * word){
+int isNodeChildless(Trie * node){
+    for(int i = 0; i < ALPHABET_SIZE; i++){
+        if(node->children[i] != NULL) return 0;
+    }
+    return 1;
+}
+
+int removeTrie(Trie * trie, char * word, void ** output){
     // Removes key from Trie but DOES NOT FREE THE CONTENT MEMORY
     // Freeing the content memory is the user's responsability
-    unsigned int index = word[0] - 'a';
-    if(trie->children[index] == NULL){
-        if(word[0] == '\0'){
-            int isNodeChildless = 1;
-            for(int i = 0; i < 26; i++){
-                if(trie->children[i] != NULL){
-                    isNodeChildless = 0;
-                    break;
-                }
-            }
-            if(isNodeChildless){
+    if(word[0] == '\0'){
+        if(isNodeChildless(trie)){
                 void * temp_content = trie->content;
-                free(trie);
-                return temp_content;
+                if(trie) free(trie);
+                *output = temp_content;
+                return 1;
+            } else {
+                void * temp_content = trie->content;
+                trie->content = NULL;
+                *output = temp_content;
+                return 0;
             }
-            return trie->content;
-        } else return NULL;
-    } else if (word[0] == '\0'){
-        void * temp_content = trie->content;
-        trie->content = NULL;
-        return temp_content;
-    } else {
-        return removeTrie(trie->children[index], word + 1);
     }
+
+    unsigned int index = word[0] - 'a';
+
+    if(trie->children[index] == NULL){
+        *output = NULL;
+        return 0;
+    }
+
+    int ret = removeTrie(trie->children[index], word+1, output);
+    if(ret) trie->children[index] = NULL;
+    if(isNodeChildless(trie) && !trie->content){
+        free(trie);
+        return 1;
+    }
+    return 0;
 }
 
 void * searchTrie(Trie * trie, char * word){
