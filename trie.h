@@ -14,7 +14,7 @@ typedef struct Trie
 
 Trie * createTrie();
 
-void destroyTrie(Trie * trie);
+void destroyTrie(Trie * trie, void (*callback)(void *));
 
 void * removeTrie(Trie * trie, char * word);
 

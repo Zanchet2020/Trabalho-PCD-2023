@@ -9,7 +9,11 @@
                 "/EHsc",
                 "/nologo",
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "${file}"
+                "${file}",
+                "${fileDirname}\\trie.c",
+                "${fileDirname}\\register.c",
+                "${fileDirname}\\radix_trie.c",
+                "${fileDirname}\\bank.c"                
             ],
             "options": {
                 "cwd": "${fileDirname}"

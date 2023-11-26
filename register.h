@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 
+#define FILE_NAME "banco.txt"
 #define ID_LENGHT 30
 #define NAME_LENGHT 1000
 
@@ -19,10 +20,5 @@ typedef struct
 Register * newRegister();
 
 void deleteRegister(Register * reg);
-
-unsigned int readBank(FILE * fs, Trie * trie);
-
-
-
 
 #endif
