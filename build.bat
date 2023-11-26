@@ -1,1 +1,0 @@
-cl main.c trie.c radix_trie.c -o Trie_Implementation.exe
