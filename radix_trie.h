@@ -5,7 +5,7 @@
 
 typedef struct Trie
 {
-    struct Trie** children;
+    void ** children;
     bool marked;
 } Trie;
 

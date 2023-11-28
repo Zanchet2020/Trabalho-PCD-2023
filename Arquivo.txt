@@ -1,0 +1,3 @@
+Lucas Samuel Zanchet
+
+Decidi fazer minha implementação da Arvore de Prefixos da maneira mais versátil, por isso utilizei void* para armazenar o conteúdo. Não usei valor booleano para a trie, decidi usar a existência de conteúdo como sinalizador de nodo terminal. Na função de destruição de trie usei uma função callback para liberar memória do conteúdo se necessário. Havia um bug onde após algumas operações o programa dava crash, a princípio foi consertado, porém não sei dizer o que causava o crash, portanto não tenho certeza se foi consertado, apesar de não ter reencontrado o problema nos meus últimos testes. Deixei aberto para uma futura implementação de otimização RADIX.
